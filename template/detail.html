@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+detail
+{% endblock title %}
+
+
+{% block body %}
+<h2 class="text-center mb-4 bg-dark text-primary">{{object.title}}</h2>
+<div class="container d-md-flex justify-content-between">
+<img src="{{object.image.url}}" alt="{{object}}" class="" style="width: 45%;"/>
+<div class="des" style="width: 50%;">
+    <a class="btn btn-danger float-end m-2" href="{% url 'delete' pk=post.pk %}">Delete</a>
+    <a class="btn btn-info float-end m-2" href="{% url 'update' pk=post.pk %}">Update</a>
+    <h2 >Description</h2>
+    <p class="text-primary">{{object.description}}</p>
+</div>
+</div>
+{% endblock body %}

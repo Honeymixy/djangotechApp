@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block title %}
+homepage
+{% endblock title %}
+
+
+{% block body %}
+<div class="container">
+    <marquee class="border border-primary" direction="left"><h1>Welcome To TechApp Home Page</h1></marquee>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore tempora voluptates obcaecati officiis
+    consequatur, voluptates obcaecati officiis consequatur?</p>
+</div>
+<div class="container">
+    <!-- <p>{{posts}}</p> -->
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-md-3 my-4">
+            <div class="card">
+                {% thumbnail post.image "200x200" crop="center" as im %}
+                <img src="{{ im.url }}" class="card-img-top" width="{{ im.width }}" height="{{ im.height }}">
+                {% endthumbnail %}
+                <div class="card-body">
+                    <h5 class="card-title">{{post.title}} </h5>
+                    <p class="card-text">{{post.description|slice:":40"}}</p>
+                    <a href="{% url 'detail' post.id %}" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock body %}
